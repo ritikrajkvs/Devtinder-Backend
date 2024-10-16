@@ -21,6 +21,10 @@ app.delete("/user", (req, res) => {
 app.patch("/user", (req, res) => {
     res.send("PATCH Request")
 })
+//advance routing
+app.patch("/user+c", (req, res) => {
+    res.send("PATCH Request")
+})
 
 app.listen(port, () => {
     console.log("Server started running on port " + port)
