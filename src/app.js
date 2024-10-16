@@ -3,11 +3,23 @@ const app = express();
 const port = 3000;
 
 app.get("/user", (req, res) => {
-    res.send("Get Request ")
+    res.send("GET Request ")
 })
 
 app.post("/user", (req, res) => {
-    res.send("POST request ")
+    res.send("POST Request ")
+})
+
+app.put("/user", (req, res) => {
+    res.send("PUT Request")
+})
+
+app.delete("/user", (req, res) => {
+    res.send("Delete Request")
+})
+
+app.patch("/user", (req, res) => {
+    res.send("PATCH Request")
 })
 
 app.listen(port, () => {
