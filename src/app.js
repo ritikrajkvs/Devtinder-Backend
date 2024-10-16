@@ -21,9 +21,18 @@ app.delete("/user", (req, res) => {
 app.patch("/user", (req, res) => {
     res.send("PATCH Request")
 })
+
 //advance routing
-app.patch("/user+c", (req, res) => {
+app.get("/user?d", (req, res) => {
     res.send("PATCH Request")
+})
+
+app.get("/user+c", (req, res) => {
+    res.send({firstName:"Akshad", Surname:"Jaiswal"})
+})
+
+app.get("/user*cd", (req, res) => {
+    res.send({firstName:"Akshad*", Surname:"Jaiswal*"})
 })
 
 app.listen(port, () => {
