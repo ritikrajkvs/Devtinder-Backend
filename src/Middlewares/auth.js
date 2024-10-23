@@ -9,7 +9,6 @@ const adminAuth = (req, res, next) => {
     }
 
 }
-
 const userAuth = (req, res, next) => {
     const token = "777";
     const isAuthorizedAdmin = token === "777";
