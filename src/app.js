@@ -5,6 +5,8 @@ const { adminAuth, userAuth } = require("./Middlewares/auth")
 
 //Handle user authentication for all admin routes using middlewares
 app.use("/admin", adminAuth)
+
+//Routes
 app.get("/admin/getAllData", (req, res) => {
     res.send("All data Generated")
 })
