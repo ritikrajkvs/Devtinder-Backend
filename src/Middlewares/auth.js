@@ -1,3 +1,4 @@
+//Authentication middlewares
 const adminAuth = (req, res, next) => {
     const token = "999";
     const isAuthorizedAdmin = token === "999";
