@@ -1,9 +1,32 @@
 const express = require("express")
-require('./Config/database')
+const connectDB = require('./Config/database')
 const app = express();
+const User = require("./Models/user")
 const port = 3000;
 
+app.post("/signup", async (req, res) => {
 
-app.listen(port, () => {
-    console.log("Server started running on port " + port)
+    const user = new User({
+        firstName: "Aaradhana",
+        lastName: "Tank",
+        emailId: "aaradhana@gmail.com",
+        password: "678910",
+        // _id: "18948665644849"
+    })
+
+    await user.save();
+    res.send("User added successfully")
 })
+
+connectDB().then(() => {
+    console.log("Database Connection Successfull")
+    app.listen(port, () => {
+        console.log("Server started running on port " + port)
+    })
+})
+    .catch(() => {
+        console.error("Database Connection Failed")
+    })
+
+
+
