@@ -14,8 +14,13 @@ app.post("/signup", async (req, res) => {
         // _id: "18948665644849"
     })
 
-    await user.save();
-    res.send("User added successfully")
+    try {
+        await user.save();
+        res.send("User added successfully")
+
+    } catch (err) {
+        res.status(400).send("Error in saving the user:" + err.message)
+    }
 })
 
 connectDB().then(() => {
