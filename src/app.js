@@ -75,6 +75,35 @@ app.get("/userID", async (req, res) => {
 
 })
 
+//delete user API - deleting a user by its id
+app.delete("/user", async (req, res) => {
+    const userId = req.body.userId;
+
+    try {
+        const users = await User.findByIdAndDelete(userId);
+        res.send("User deleted Successfully")
+
+    } catch (err) {
+        res.status(400).send("Something went wrong")
+    }
+})
+
+// patch user API - updating the data of user
+app.patch("/user", async (req, res) => {
+    const userId = req.body.userId;
+    const data = req.body;
+
+    try {
+        const user = await User.findByIdAndUpdate({ _id: userId }, data, { returnDocument: "before" });
+        console.log(user)
+        res.send("User updated successfully")
+
+    } catch (err) {
+        res.status(400).send("Something went wrong")
+    }
+})
+
+//database connect before server 
 connectDB().then(() => {
     console.log("Database Connection Successfull")
     app.listen(port, () => {
