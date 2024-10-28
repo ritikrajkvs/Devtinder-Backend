@@ -20,7 +20,7 @@ app.post("/signup", async (req, res) => {
     }
 })
 
-//user API to find the single user
+//user API to find the single user by by email
 app.get("/user", async (req, res) => {
     //getting user from body
     const userEmail = req.body.emailId;
@@ -30,7 +30,7 @@ app.get("/user", async (req, res) => {
             res.status(400).send("User not found")
         } else {
 
-            console.log(users)
+            // console.log(users)
             res.send(users)
         }
     }
@@ -48,6 +48,24 @@ app.get("/feed", async (req, res) => {
             res.send("No user found")
         } else {
             console.log(users);
+            res.send(users)
+        }
+    }
+    catch (err) {
+        res.status(400).send("Something went wrong")
+    }
+
+})
+
+// UserID API - get all users from ID
+app.get("/userID", async (req, res) => {
+
+    try {
+        const users = await User.findById('671e144c0a3231e5a6fdd3e5')
+        if (users.length === 0) {
+            res.send("No user found")
+        } else {
+            // console.log(users);
             res.send(users)
         }
     }
