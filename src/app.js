@@ -25,7 +25,7 @@ app.get("/user", async (req, res) => {
     //getting user from body
     const userEmail = req.body.emailId;
     try {
-        const users = await User.find({ emailId: userEmail })
+        const users = await User.findOne({ emailId: userEmail })
         if (users.length === 0) {
             res.status(400).send("User not found")
         } else {
@@ -100,6 +100,23 @@ app.patch("/user", async (req, res) => {
 
     } catch (err) {
         res.status(400).send("Something went wrong")
+    }
+})
+
+
+//User update API with email id
+app.patch("/userEmail", async (req, res) => {
+   
+    try {
+        const user = await User.updateOne({ emailId:"mint@gmail.com" }, {
+            firstName: "Mint found it",
+            password: "Mint2002"
+        });
+        console.log(user)
+        res.send("User updated successfully")
+
+    } catch (err) {
+        res.status(400).send(err)
     }
 })
 
