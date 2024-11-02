@@ -29,12 +29,12 @@ const userSchema = new mongoose.Schema({
     gender: {
         type: String,
         required: true,
+        trim: true,
         validate(value) {
-            if (![male, female, others]=== value){
-                throw new error("Not a valid gender (Male , Female and other)")
+            if (!["male", "female", "others"].includes(value)) {
+                throw new Error("Not a valid gender (Male , Female and other)")
             }
         }
-
     },
     about: {
         type: String,
@@ -43,7 +43,12 @@ const userSchema = new mongoose.Schema({
     photoURL: {
         type: String,
         default: "https://www.freepik.com/free-photos-vectors/default-user"
+    },
+    skills: {
+        type: [String],
     }
+}, {
+    timestamps: true
 })
 
 mongoose.model("User", userSchema);

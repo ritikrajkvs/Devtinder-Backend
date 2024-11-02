@@ -94,21 +94,24 @@ app.patch("/user", async (req, res) => {
     const data = req.body;
 
     try {
-        const user = await User.findByIdAndUpdate({ _id: userId }, data, { returnDocument: "before" });
+        const user = await User.findByIdAndUpdate({ _id: userId }, data, {
+            returnDocument: "before",
+            runValidators: true
+        });
         console.log(user)
         res.send("User updated successfully")
-
     } catch (err) {
         res.status(400).send(err)
+
     }
 })
 
 
 //User update API with email id
 app.patch("/userEmail", async (req, res) => {
-   
+
     try {
-        const user = await User.updateOne({ emailId:"mint@gmail.com" }, {
+        const user = await User.updateOne({ emailId: "mint@gmail.com" }, {
             firstName: "Mint found it",
             password: "Mint2002"
         });
