@@ -13,3 +13,4 @@ Learning Before building
 - Database schema models and Mongoose
 - Diving into APIs
 - Data Sanitization & Schema validation
+- Password Encryption
