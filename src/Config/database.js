@@ -4,8 +4,7 @@ const databaseURL = "mongodb+srv://akshadsantoshjaiswal:rFw7NSxncTpSc7Bq@cluster
 const connectDB = async () => {
     await mongoose.connect(databaseURL)
 }
-
-module.exports=connectDB;
+module.exports = connectDB;
 
 
 

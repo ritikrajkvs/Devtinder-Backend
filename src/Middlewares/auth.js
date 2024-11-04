@@ -8,8 +8,8 @@ const adminAuth = (req, res, next) => {
     } else {
         next();
     }
-
 }
+
 const userAuth = (req, res, next) => {
     const token = "777";
     const isAuthorizedAdmin = token === "777";
@@ -19,8 +19,8 @@ const userAuth = (req, res, next) => {
     } else {
         next();
     }
-
 }
+
 module.exports = {
     adminAuth,
     userAuth
