@@ -2,21 +2,63 @@ const express = require("express")
 const connectDB = require('./Config/database')
 const app = express();
 const User = require("./Models/user");
-const user = require("./Models/user");
 const port = 3000;
+const validator = require("validator")
+const { validateSignupData } = require("./utils/validation")
+const bcrypt = require("bcryptjs")
 
 app.use(express.json());
+
 //signup api for signing the user
 app.post("/signup", async (req, res) => {
-    const data = req.body;
-    const user = new User(data)
-
     try {
+        //Validate the data
+        validateSignupData(req)
+        const { firstName, lastName, emailId, password, age, gender, about, skills } = req.body;
+
+        //Encrypt the password
+        const passwordHash = await bcrypt.hash(password, 10)
+        // console.log(passwordHash)
+
+        const user = new User(
+            {
+                firstName,
+                lastName,
+                emailId,
+                password: passwordHash,
+                age,
+                gender,
+                about,
+                skills
+            }
+        )
         await user.save();
         res.send("User added successfully")
 
     } catch (err) {
-        res.status(400).send("Error in saving the user:" + err.message)
+        res.status(400).send("ERROR:" + err.message)
+    }
+})
+
+app.post("/login", async (req, res) => {
+    try {
+        const { emailId, password } = req.body;
+        if (!validator.isEmail(emailId)) {
+            throw new Error("Invalid Email")
+        }
+        const user = await User.findOne({ emailId: emailId })
+        if (!user) {
+            throw new Error("Invalid Credentials")
+        }
+        const isValidPassword = await bcrypt.compare(password, user.password)
+
+        if (isValidPassword) {
+            res.send("User Loggedin Successfully")
+        } else {
+            throw new Error("Invalid Vredentials")
+        }
+    } catch (err) {
+        res.status(400).send("ERROR:" + err.message)
     }
 })
 

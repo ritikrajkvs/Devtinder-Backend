@@ -5,7 +5,7 @@ const validator = require("validator")
 const userSchema = new mongoose.Schema({
     firstName: {
         type: String,
-        required: true,
+        required: false,
         minLength: 3,
         maxLenght: 50
     },
@@ -15,7 +15,7 @@ const userSchema = new mongoose.Schema({
     emailId: {
         type: String,
         lowercase: true,
-        required: true,
+        required: false,
         unique: true,
         trim: true,
         validate(value) {
@@ -36,12 +36,12 @@ const userSchema = new mongoose.Schema({
     },
     age: {
         type: Number,
-        required: true,
+        required: false,
         min: 18
     },
     gender: {
         type: String,
-        required: true,
+        required: false,
         trim: true,
         validate(value) {
             if (!["male", "female", "others"].includes(value)) {
