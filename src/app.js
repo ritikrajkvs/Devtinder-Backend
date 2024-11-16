@@ -29,7 +29,6 @@ app.get("/user", async (req, res) => {
         if (users.length === 0) {
             res.status(400).send("User not found")
         } else {
-
             // console.log(users)
             res.send(users)
         }
@@ -108,6 +107,9 @@ app.patch("/user/:userId", async (req, res) => {
 
         if (!isUpdateAllowed) {
             throw new Error("Update Not Allowed")
+        }
+        if (data?.skills.length > 10) {
+            throw new Error("Skills can not be more than 10")
         }
 
         const user = await User.findByIdAndUpdate({ _id: userId }, data, {
