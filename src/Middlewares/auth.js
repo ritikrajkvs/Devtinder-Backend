@@ -1,27 +1,27 @@
-//Authentication middlewares
-const adminAuth = (req, res, next) => {
-    const token = "999";
-    const isAuthorizedAdmin = token === "999";
-    console.log("Admin Authentication checking")
-    if (!isAuthorizedAdmin) {
-        res.status(401).send("Unauthorized Admin")
-    } else {
-        next();
-    }
-}
+const jwt = require("jsonwebtoken")
+const User = require("../Models/user")
+const userAuth = async (req, res, next) => {
+    try {
+        const { token } = req.cookies
+        if (!token) {
+            throw new Error("Not a Vaid token !!")
+        }
 
-const userAuth = (req, res, next) => {
-    const token = "777";
-    const isAuthorizedAdmin = token === "777";
-    console.log("User Authentication checking")
-    if (!isAuthorizedAdmin) {
-        res.status(401).send("Unauthorized Admin")
-    } else {
+        const deocodedObj = await jwt.verify(token, "999@Akshad")
+        const { _id } = deocodedObj;
+
+        const user = await User.findById(_id);
+        if (!user) {
+            throw new Error("User Not Found")
+        }
+        req.user= user;
         next();
+    } catch (err) {
+        res.status(400).send("ERROR : " + err.message)
     }
+
 }
 
 module.exports = {
-    adminAuth,
     userAuth
 }

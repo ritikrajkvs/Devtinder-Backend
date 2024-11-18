@@ -14,3 +14,4 @@ Learning Before building
 - Diving into APIs
 - Data Sanitization & Schema validation
 - Password Encryption and Auth using bcryptjs
+- Authentication, JWT and Cookies
