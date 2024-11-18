@@ -6,8 +6,11 @@ const port = 3000;
 const validator = require("validator")
 const { validateSignupData } = require("./utils/validation")
 const bcrypt = require("bcryptjs")
+const cookieParser = require("cookie-parser")
+const jwt = require("jsonwebtoken")
 
 app.use(express.json());
+app.use(cookieParser());
 
 //signup api for signing the user
 app.post("/signup", async (req, res) => {
@@ -53,10 +56,38 @@ app.post("/login", async (req, res) => {
         const isValidPassword = await bcrypt.compare(password, user.password)
 
         if (isValidPassword) {
+            //create a jwt token
+            const token = await jwt.sign({ _id: user._id }, "999@Akshad")
+            // console.log(token)
+
+            //cookie
+            res.cookie("token", token)
             res.send("User Loggedin Successfully")
         } else {
             throw new Error("Invalid Vredentials")
         }
+    } catch (err) {
+        res.status(400).send("ERROR:" + err.message)
+    }
+})
+
+//profile API to get the profile details
+app.get("/profile", async (req, res) => {
+    try {
+        const cookies = req.cookies;
+        const { token } = cookies;
+        if (!token) {
+            throw new Error("Invalid Token")
+        }
+
+        //validate my token
+        const decodedMessage = await jwt.verify(token, "999@Akshad");
+        const { _id } = decodedMessage
+
+        const user = await User.findById(_id);
+        console.log(user)
+
+        res.send(user)
     } catch (err) {
         res.status(400).send("ERROR:" + err.message)
     }
