@@ -58,11 +58,11 @@ app.post("/login", async (req, res) => {
 
         if (isValidPassword) {
             //create a jwt token
-            const token = await jwt.sign({ _id: user._id }, "999@Akshad")
+            const token = await jwt.sign({ _id: user._id }, "999@Akshad", { expiresIn: "1d" })
             // console.log(token)
 
             //cookie
-            res.cookie("token", token)
+            res.cookie("token", token, { expires: new Date(Date.now() + 8 * 3600000) })
             res.send("User Loggedin Successfully")
         } else {
             throw new Error("Invalid Vredentials")
@@ -81,8 +81,9 @@ app.get("/profile", userAuth, async (req, res) => {
 })
 
 app.post("/sendConnectionRequest", userAuth, async (req, res) => {
+    const user = req.user;
     console.log("Sending connection request")
-    res.send("Connection request sent")
+    res.send(user.firstName + " sent the connection request")
 })
 
 //database connect before server 
