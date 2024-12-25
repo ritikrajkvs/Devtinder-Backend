@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 
+//Connection request schema
 const connectionRequest = new mongoose.Schema({
 
     fromUserId: {
