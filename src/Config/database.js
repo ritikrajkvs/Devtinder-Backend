@@ -1,8 +1,12 @@
 const mongoose = require("mongoose");
-const databaseURL =
-  "mongodb+srv://akshadsantoshjaiswal:rFw7NSxncTpSc7Bq@cluster0.yulixmn.mongodb.net/devTinder?";
 
 const connectDB = async () => {
-  await mongoose.connect(databaseURL);
+  try {
+    await mongoose.connect(process.env.MONGO_URI);
+    console.log("MongoDB connected Successfully");
+  } catch (err) {
+    console.log(err);
+  }
 };
+
 module.exports = connectDB;
