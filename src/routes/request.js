@@ -75,7 +75,7 @@ requestRouter.post(
   async (req, res) => {
     try {
       const loggedInUser = req.user;
-      const { status, requestId } = req.params.status;
+      const { status, requestId } = req.params;
 
       //Validate Status
       const allowedStatuses = ["accepted", "rejected"];
@@ -88,9 +88,25 @@ requestRouter.post(
 
       //validating the request
       const connectionRequest = await ConnectionRequestModel.findOne({
-        _id:requestId,
-        toUserId:loggedInUser._id,
-        status:"intrested"
+        _id: requestId,
+        toUserId: loggedInUser._id,
+        status: "intrested",
+      });
+
+      if (!connectionRequest) {
+        return res.status(404).json({
+          message: "request not found ",
+          success: false,
+        });
+      }
+
+      connectionRequest.status = status;
+      const data = await connectionRequest.save();
+
+      res.status(200).json({
+        message: "Connection request " + status,
+        data,
+        success: true,
       });
     } catch (error) {
       res.status(400).send("ERROR:" + error.message);
