@@ -13,18 +13,20 @@ app.use(cookieParser());
 const authRouter = require("./src/routes/auth");
 const profileRouter = require("./src/routes/profile");
 const requestRouter = require("./src/routes/request");
+const userRouter = require("./src/routes/user");
 
 app.use("/", authRouter);
 app.use("/", profileRouter);
 app.use("/", requestRouter);
+app.use("/", userRouter);
 
 //database connect before server
 connectDB().then(() => {
-    try {
-        app.listen(port, () => {
-            console.log(`Server running on `+ port)
-        })
-    } catch (error) {
-        console.log(error)
-    }
-})
+  try {
+    app.listen(port, () => {
+      console.log(`Server running on ` + port);
+    });
+  } catch (error) {
+    console.log(error);
+  }
+});

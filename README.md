@@ -19,3 +19,4 @@ Learning Before building
 - Logical Database and Compound Indexes
 - Code Optimization and Formatting 
 - Clean code writing and Efficient routing
+- ref, populate and thought process of writing API's
