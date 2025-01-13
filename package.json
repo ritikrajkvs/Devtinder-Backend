@@ -4,7 +4,8 @@
   "description": "devTinde Backend using Nodejs",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server":"nodemon app.js"
   },
   "author": "Akshad Jaiswal",
   "license": "ISC",
