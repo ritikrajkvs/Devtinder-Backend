@@ -41,14 +41,6 @@ requestRouter.post(
         throw new Error("Already sent the connection request before");
       }
 
-      //   //sending self request check
-      //   if (fromUserId == toUserId) {
-      //     return res.status(400).json({
-      //       message: "You can't send request to your own",
-      //       success: false,
-      //     });
-      //   }
-
       const connectionRequest = new ConnectionRequestModel({
         fromUserId,
         toUserId,

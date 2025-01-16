@@ -34,7 +34,7 @@ authRouter.post("/signup", async (req, res) => {
       skills,
     });
     await user.save();
-    res.send("User added successfully");
+    res.status(200).send("User added successfully");
   } catch (err) {
     res.status(400).send("ERROR:" + err.message);
   }
@@ -56,7 +56,7 @@ authRouter.post("/login", async (req, res) => {
       res.cookie("token", token, {
         expires: new Date(Date.now() + 8 * 3600000),
       });
-      res.send("User Loggedin Successfully");
+      res.status(200).send("User Loggedin Successfully");
     } else {
       throw new Error("Invalid Vredentials");
     }
