@@ -1,6 +1,6 @@
 # devTinder-backend
 (DEVELOPMENT Phase...)
-MERN app for developer Interaction
+MERN web app for developer interaction 
 
 ## Learning *`NodeJs`* and Updating the backend
 [**Namsate Nodejs**](https://github.com/akshadjaiswal/Namaste-Nodejs)
