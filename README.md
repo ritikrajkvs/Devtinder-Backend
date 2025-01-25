@@ -20,3 +20,4 @@ Learning Before building
 - Code Optimization and Formatting 
 - Clean code writing and Efficient routing
 - ref, populate and thought process of writing API's
+- Feed and Pagination 
