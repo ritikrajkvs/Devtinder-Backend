@@ -26,7 +26,7 @@ userRouter.get("/user/requests/recieved", userAuth, async (req, res) => {
 userRouter.get("/user/connections", userAuth, async (req, res) => {
   try {
     const loggedInUser = req.user;
-
+    console.log(loggedInUser)
     const connectionRequests = await ConnectionRequestModel.find({
       $or: [
         { toUserId: loggedInUser._id, status: "accepted" },
@@ -48,6 +48,26 @@ userRouter.get("/user/connections", userAuth, async (req, res) => {
     });
   } catch (error) {
     res.status(400).send("ERROR :" + error.message);
+  }
+});
+
+userRouter.get("/user/feed", userAuth, async (req, res) => {
+  try {
+    //You should see all the user cards except
+    //1 his own card
+    //2 His own connections
+    //3 Ingored people
+    //4 already ent the connection request
+
+    const loggedInUser = req.user;
+    console.log(loggedInUser)
+    //find all the connection request either i have send or recieved
+    const connectionRequest = await ConnectionRequestModel.find({
+      $or: [{ fromUserId: loggedInUser._id }, { toUserId: loggedInUser._id }],
+    });
+    res.send(connectionRequest);
+  } catch (error) {
+    res.status(400).send("ERROR: " + error.message);
   }
 });
 module.exports = userRouter;
