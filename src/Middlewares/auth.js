@@ -7,7 +7,7 @@ const userAuth = async (req, res, next) => {
       throw new Error("Not a Vaid token !!");
     }
 
-    const deocodedObj = await jwt.verify(token, "999@Akshad");
+    const deocodedObj = await jwt.verify(token, process.env.JWT_SECRET);
     const { _id } = deocodedObj;
 
     const user = await User.findById(_id);

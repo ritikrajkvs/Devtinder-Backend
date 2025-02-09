@@ -2,7 +2,6 @@ const express = require("express");
 const connectDB = require("./src/Config/database");
 const cookieParser = require("cookie-parser");
 const app = express();
-const port = 3000;
 const dotenv = require("dotenv");
 dotenv.config({});
 
@@ -23,8 +22,8 @@ app.use("/", userRouter);
 //database connect before server
 connectDB().then(() => {
   try {
-    app.listen(port, () => {
-      console.log(`Server running on ` + port);
+    app.listen(process.env.PORT, () => {
+      console.log(`Server running on ` + process.env.PORT);
     });
   } catch (error) {
     console.log(error);
