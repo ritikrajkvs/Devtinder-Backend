@@ -129,21 +129,20 @@ Create a `.env` file and add:
 ```ini
 DATABASE_URL=mongodb+srv://<username>:<password>@cluster0.mongodb.net/devTinder
 JWT_SECRET=your_jwt_secret
-COOKIE_SECRET=your_cookie_secret
-PORT=5000
+PORT=3000
 ```
 
 ### **3️⃣ Start the Backend Server**
 ```bash
 npm start
 ```
-Server runs at: `http://localhost:5000/`
+Server runs at: `http://localhost:3000/`
 
 ---
 
 ## 🔗 Frontend Integration
 The frontend for DevTinder is available at:
-🔗 **[DevTinder Frontend Repository](#)**
+🔗 **[DevTinder Frontend Repository](https://github.com/akshadjaiswal/devTinder-frontend)**
 
 Make sure the backend is running before accessing the frontend.
 
