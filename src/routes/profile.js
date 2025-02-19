@@ -6,15 +6,17 @@ const { validateEditFields } = require("../utils/validation");
 //profile API to get the profile details
 profileRouter.get("/profile/view", userAuth, async (req, res) => {
   const user = req.user;
+  console.log("profile request received:", req.body);
   res.send(user);
 });
 
-profileRouter.patch("/profile/edit", userAuth, async (req, res) => {
+profileRouter.post("/profile/edit", userAuth, async (req, res) => {
   try {
     if (!validateEditFields(req)) {
       throw new Error("Invalid Edit request");
     }
     const loggedInUser = req.user;
+    console.log("PATCH request received:", req.body);
     Object.keys(req.body).forEach((key) => (loggedInUser[key] = req.body[key]));
     await loggedInUser.save();
     res.json({
