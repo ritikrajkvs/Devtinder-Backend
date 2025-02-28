@@ -23,6 +23,13 @@ authRouter.post("/signup", async (req, res) => {
     //Encrypt the password
     const passwordHash = await bcrypt.hash(password, 10);
 
+    const checkEmail=await User.findOne({emailId});
+    console.log(checkEmail)
+    if(checkEmail){
+      throw new Error("Email Already Exist")
+    }
+
+
     const user = new User({
       firstName,
       lastName,
@@ -33,8 +40,14 @@ authRouter.post("/signup", async (req, res) => {
       about,
       skills,
     });
-    await user.save();
-    res.status(200).send("User added successfully");
+    const savedUser = await user.save();
+    const token = await savedUser.getjwt();
+    res.cookie("token", token, {
+      expires: new Date(Date.now() + 8 * 3600000),
+    });
+    res
+      .status(200)
+      .json({ message: "User added successfully", data: savedUser });
   } catch (err) {
     res.status(400).send("ERROR:" + err.message);
   }
@@ -56,7 +69,7 @@ authRouter.post("/login", async (req, res) => {
       res.cookie("token", token, {
         expires: new Date(Date.now() + 8 * 3600000),
       });
-      res.status(200).json({user});
+      res.status(200).json({ user });
     } else {
       throw new Error("Invalid Vredentials");
     }
