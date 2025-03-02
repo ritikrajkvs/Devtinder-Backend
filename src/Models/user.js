@@ -54,7 +54,7 @@ const userSchema = new mongoose.Schema(
     },
     about: {
       type: String,
-      default: "Dev is in search for someone here",
+      // default: "Dev is in search for someone here",
     },
     photoURL: {
       type: String,

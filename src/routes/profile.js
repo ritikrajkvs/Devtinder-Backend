@@ -6,7 +6,7 @@ const { validateEditFields } = require("../utils/validation");
 //profile API to get the profile details
 profileRouter.get("/profile/view", userAuth, async (req, res) => {
   const user = req.user;
-  console.log("profile request received:", req.body);
+  // console.log("profile request received:", req.body);
   res.send(user);
 });
 
