@@ -1,9 +1,3 @@
-Here’s your cleaned-up, updated **DevTinder Backend README** text — with no mention of any other contributor (like *akshadjaiswal*), and keeping your username & links consistent.
-
-You can copy–paste this into your `README.md` file in the backend repo:
-
----
-
 # DevTinder Backend 🚀
 
 ## 📌 Overview
