@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon app.js"
   },
-  "author": "Akshad Jaiswal",
+  "author": "Ritik Raj",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
