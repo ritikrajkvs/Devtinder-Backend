@@ -9,11 +9,6 @@ This repository contains the **backend** of DevTinder, built with **Node.js, Exp
 
 ---
 
-## 📖 My Node.js Learning Repository
-I learned and maintained all my Node.js knowledge in one place:
-[**Namsate Nodejs**](https://github.com/akshadjaiswal/Namaste-Nodejs)
-
-
 ## 🛠️ Tech Stack
 - **Backend Framework**: [Node.js](https://nodejs.org/en) + [Express.js](https://expressjs.com/)
 - **Database**: [MongoDB](https://www.mongodb.com/) + [Mongoose](https://mongoosejs.com/)
@@ -116,58 +111,19 @@ I learned and maintained all my Node.js knowledge in one place:
 
 ---
 
-## 🏗️ Setup & Running the Server
-
-### **1️⃣ Clone the Repository**
-```bash
-git clone https://github.com/akshadjaiswal/devTinder-backend.git
-cd devTinder-backend
-```
-
-### **2️⃣ Set Up Environment Variables**
-Create a `.env` file and add:
-```ini
-DATABASE_URL=mongodb+srv://<username>:<password>@cluster0.mongodb.net/devTinder
-JWT_SECRET=your_jwt_secret
-PORT=3000
-```
-
-### **3️⃣ Start the Backend Server**
-```bash
-npm start
-```
-Server runs at: `http://localhost:3000/`
-
----
 
 ## 🔗 Frontend Integration
 The frontend for DevTinder is available at:
-🔗 **[DevTinder Frontend Repository](https://github.com/akshadjaiswal/devTinder-frontend)**
+🔗 **[DevTinder Frontend Repository](https://github.com/ritikrajkvs/devTinder---frontend)**
 
 Make sure the backend is running before accessing the frontend.
 
 ---
-## Learning Resources
 
-Explore my additional repositories to deepen your understanding of related topics in the JavaScript ecosystem:
-
-- [Namaste Javascript](https://github.com/akshadjaiswal/Namaste-Javascript): A repository focused on learning Javascript concepts, from basics to advanced programming.
-- [Namaste React](https://github.com/akshadjaiswal/Namaste-React): A repository dedicated to mastering React.js, covering foundational and advanced aspects of building interactive UIs.
-
----
-
-## 📢 Contribution Guidelines
-Since the project is now fully functional, improvements are still welcome!
-✅ Feel free to open issues for bugs or feature requests.  
-✅ Fork the repository and submit a pull request.  
-
----
 
 ## 📌 Future Enhancements
-🔹 Real-time notifications using WebSockets  
 🔹 Messaging System for better user interaction  
-🔹 Profile Search & Filtering  
-🔹 Unit Testing for API reliability  
+🔹 Profile Search & Filtering    
 
 ---
 
