@@ -7,7 +7,7 @@ const userAuth = async (req, res, next) => {
       return res.status(401).send("Please Login or Signup");
     }
 
-    const deocodedObj = await jwt.verify(token, process.env.JWT_SECRET);
+    const deocodedObj = jwt.verify(token, process.env.JWT_SECRET);
     const { _id } = deocodedObj;
 
     const user = await User.findById(_id);
