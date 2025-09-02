@@ -10,17 +10,7 @@ This repository contains the **backend** of DevTinder, built with **Node.js, Exp
 
 ---
 
-## 🛠️ Tech Stack
-
-* **Backend Framework**: [Node.js](https://nodejs.org/en) + [Express.js](https://expressjs.com/)
-* **Database**: [MongoDB](https://www.mongodb.com/) + [Mongoose](https://mongoosejs.com/)
-* **Authentication**: [JWT (JSON Web Tokens)](https://jwt.io/) + Cookies
-* **Encryption**: [bcryptjs](https://www.npmjs.com/package/bcryptjs) for password hashing
-* **API Testing**: Postman
-* **Environment Variables Management**: dotenv
-* **Package Manager**: npm
-
----
+##  
 
 ## 🔑 Features Implemented
 
@@ -128,15 +118,7 @@ This repository contains the **backend** of DevTinder, built with **Node.js, Exp
 | GET    | `/user/feed?page=1&limit=10` | Get suggested developer profiles with pagination | ✅             |
 
 ---
-
-## 🔗 Frontend Integration
-
-The frontend for DevTinder is available at:
-🔗 **[DevTinder Frontend Repository](https://github.com/ritikrajkvs/devTinder-frontend)**
-
-Make sure the backend is running before accessing the frontend.
-
----
+ 
 
 ## 📌 Future Enhancements
 
